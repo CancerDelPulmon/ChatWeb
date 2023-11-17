@@ -3,22 +3,28 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Accueil</title>
+        <title>Home Depot</title>
+
         <script src="dist/index.js"></script>
+        <script type="module" src="src/page-index.js"></script>
+
         <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/index.css">
         <link rel="icon" href="img/favicon.png" type="image/png" />
+
     </head>
     <body>        
         
         <form action="" method="post" autocomplete="off">
-            <div class="sign-in-input-group">
+            <div class="sign-in-input-group" >
                 <div id="api-message"></div>
-                <input type="text" name="username" placeholder="Nom d'usager" required>
+                <input type="text" name="username" placeholder="Cool name" required>
                 <input type="password" name="password" placeholder="Mot de passe" required>
                 <button>Connexion</button>
             </div>
         </form>
-        <a href="register.html">S'enregistrer</a>
-
+        <div class = "rounded-box enregistrer">
+            S'enregistrer
+        </div>
     </body>
 </html>

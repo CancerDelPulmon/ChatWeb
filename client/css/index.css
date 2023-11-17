@@ -1,0 +1,20 @@
+.rounded-box {
+    background-color: #ee7125; /* Set your desired background color */
+    font-size: calc(0.5vw + 8px);
+    border-radius: 15px; /* Adjust the border-radius to control the roundness */
+    padding: 20px; /* Optional: Add padding to the content inside the box */
+    color: #fff; /* Optional: Set text color */
+    font-family: sans-serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; /* Change the cursor to indicate it's clickable */
+    
+  }
+
+  .enregistrer
+  {
+    width: calc(5vw + 10px);
+    height: calc(2vw + 10px);
+  }
