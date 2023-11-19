@@ -6,7 +6,6 @@
         <title>Home Depot</title>
 
         <script src="dist/index.js"></script>
-
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/index.css">
         <link rel="icon" href="img/favicon.png" type="image/png" />
@@ -15,15 +14,22 @@
     <body>        
         
         <form action="" method="post" autocomplete="off">
-            <div class="sign-in-input-group" >
+            
+            <div class="sign-in-input-group rounded-box" >
+                <div class = "login_selector">
+                    <div class>Create account</div>
+                    <div>Sign in</div>
+                </div>
                 <div id="api-message"></div>
-                <input type="text" name="username" placeholder="Cool name" required>
-                <input type="password" name="password" placeholder="Mot de passe" required>
-                <button>Connexion</button>
+                <div>
+                    <div class = "input_box"><div>Username:</div><input type="text" name="username" required></div>
+                
+                    <div class = "input_box"><div>Password:</div><input type="password" name="password"required></div>
+                </div>
+                <button class="rounded-box login">Connexion</button>
             </div>
         </form>
-        <div class = "rounded-box enregistrer">
-            S'enregistrer
-        </div>
+        
+        
     </body>
 </html>

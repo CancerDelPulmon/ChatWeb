@@ -1,20 +1,75 @@
 .rounded-box {
-    background-color: #ee7125; /* Set your desired background color */
-    font-size: calc(0.5vw + 8px);
-    border-radius: 15px; /* Adjust the border-radius to control the roundness */
-    padding: 20px; /* Optional: Add padding to the content inside the box */
-    color: #fff; /* Optional: Set text color */
-    font-family: sans-serif;
-    font-weight: bold;
+    font-size: calc(0.5vw + 12px);
+    border-radius: 15px;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer; /* Change the cursor to indicate it's clickable */
-    
   }
 
   .enregistrer
   {
-    width: calc(5vw + 10px);
+    display: none;
+    background-color: lightgray;
+    width: 50%;
     height: calc(2vw + 10px);
+    cursor: pointer;
+    color:white;
+  }
+  .login{
+    background-color: #ee7125;
+    width: 100%;
+    height: calc(2vw + 10px);
+    cursor: pointer;
+    color:white;
+
+  }
+  .sign-in-input-group
+  {
+    width: calc(20vw + 300px);
+    height: calc(60vh + 10px);
+    border: black solid 1px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+  }
+
+  body
+  {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+    
+  }
+  html
+  {
+    background-image: url('../img/favicon.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+    background-size: contain;
+      background-position: center; /* Adjust as needed */
+      background-repeat: repeat;
+  }
+
+  .input_box
+  {
+    font-size: calc(0.5vw + 8px);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color:black;
+  }
+
+  .login_selector
+  {
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+  }
+
+  .login_selector > div {
+    flex: 1; /* Distribute available space equally among child elements */
+    text-align: center; /* Center text inside each div */
   }
