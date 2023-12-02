@@ -17,34 +17,18 @@
     color:white;
   }
   .login{
-    background-color: #ee7125;
+    margin-top: 20px;
+    background-color: white;
     width: 100%;
     height: calc(2vw + 10px);
     cursor: pointer;
-    color:white;
+    color:#ED7D15;
+    font-size: calc(0.5vw + 20px);
 
   }
-  .sign-in-input-group
-  {
-    width: calc(20vw + 300px);
-    height: calc(60vh + 10px);
-    border: black solid 1px;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-  }
+  
 
-  body
-  {
-    display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-    
-  }
+  
   html
   {
     background-image: url('../img/favicon.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
@@ -59,7 +43,9 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
     color:black;
+    margin-top: 10px;
   }
 
   .login_selector
@@ -72,4 +58,15 @@
   .login_selector > div {
     flex: 1; /* Distribute available space equally among child elements */
     text-align: center; /* Center text inside each div */
+  }
+
+  input{
+    width: 100%;
+  }
+
+  .other_websites{
+    width: 100%;
+    display: flex;
+    align-content: space-between;
+    justify-content: space-between;
   }

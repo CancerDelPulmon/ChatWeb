@@ -4,3 +4,33 @@
     font-family: sans-serif;
     font-weight: bold;
 }
+body
+  {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+    
+  }
+
+  .input-group
+  {
+    width: calc(20vw + 300px);
+    height: calc(60vh + 10px);
+    border: black solid 1px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+  }
+
+  .rounded-box {
+    font-size: calc(0.5vw + 12px);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

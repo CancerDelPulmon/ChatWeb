@@ -12,6 +12,12 @@ window.addEventListener("load", () => {
 // Lorsqu'un nouveau message doit être affiché à l'écran, cette fonction est appelée
 const newMessage = (fromUser, message, isPrivate) => {
     console.log(fromUser, message, isPrivate);
+
+    let node = document.createElement("div");
+    node.innerText = fromUser + ": " + message;
+    let parentNode = document.querySelector("#vue-container");
+    parentNode.append(node);
+
 }
 
 // À chaque 2-3 secondes, cette fonction est appelée. Il faudra donc mettre à jour la liste des membres
