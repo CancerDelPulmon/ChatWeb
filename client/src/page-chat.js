@@ -15,9 +15,8 @@ const newMessage = (fromUser, message, isPrivate) => {
 
     let node = document.createElement("div");
     node.innerText = fromUser + ": " + message;
-    let parentNode = document.querySelector("#vue-container");
+    let parentNode = document.querySelector("#vue-container"); 
     parentNode.append(node);
-
 }
 
 // À chaque 2-3 secondes, cette fonction est appelée. Il faudra donc mettre à jour la liste des membres
