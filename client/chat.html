@@ -10,11 +10,33 @@
         <link rel="icon" href="img/favicon.png" type="image/png" />
     </head>
     <body>
-		<div id="vue-container" style = "border: 1px black solid"></div>
-        <a href="javascript:void(0)" id="sign-out-btn">Déconnexion</a>
+        <div class = "game">game</div>
+        <div class = "chat">
+            <div>Staff :</div>
+            <div class = "members"></div>
+            <a href="javascript:void(0)" id="sign-out-btn">Sortir du magasin</a>
+            <div id = ""></div>
+		    <div id="vue-container" style = "border: 1px black solid"></div>
+            
 
-        <div>
-            <textarea cols="30" rows="10"></textarea>
+            <div>
+                <textarea cols="30" rows="10"></textarea>
+            </div>
         </div>
+
+        <div id="audio-container">
+            <audio id="background-music" loop>
+                <source src="music/theme_song.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            <div id="audio-controls"><button id = 'play-button'>Play</button></div>
+        </div>
+        <script>
+            // Get a reference to the audio element
+            
+        
+            // Function to toggle play/pause
+            
+        </script>
     </body>
 </html>
