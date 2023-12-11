@@ -10,33 +10,38 @@
         <link rel="icon" href="img/favicon.png" type="image/png" />
     </head>
     <body>
-        <div class = "game">game</div>
-        <div class = "chat">
-            <div>Staff :</div>
-            <div class = "members"></div>
-            <a href="javascript:void(0)" id="sign-out-btn">Sortir du magasin</a>
-            <div id = ""></div>
-		    <div id="vue-container" style = "border: 1px black solid"></div>
-            
-
-            <div>
-                <textarea cols="30" rows="10"></textarea>
+        <div class = "game">
+            <div class = "arrow right"></div>
+            <div class = "arrow forward"></div>
+            <div class = "arrow left"></div>
+            <div class = "room-description">
+                <div class = "alert-message"></div>
+            </div>
+            <div id="audio-container">
+                <audio id="background-music">
+                    <source src="music/theme_song.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
         </div>
 
-        <div id="audio-container">
-            <audio id="background-music" loop>
-                <source src="music/theme_song.mp3" type="audio/mp3">
-                Your browser does not support the audio element.
-            </audio>
-            <div id="audio-controls"><button id = 'play-button'>Play</button></div>
+        <div class = "chat">
+            <h2>Staff :</h2>
+            <div class = "members"></div>
+            <a href="javascript:void(0)" id="sign-out-btn">Sortir du magasin</a>
+            
+		    <div id="vue-container">
+                <h2>Chat :</h2>
+                <h3>You are:  </h3>
+                <h3 class = "user"></h3>
+            </div>
+            
+
+            <div>
+                <textarea cols="38" rows="10"></textarea>
+            </div>
         </div>
-        <script>
-            // Get a reference to the audio element
-            
+
         
-            // Function to toggle play/pause
-            
-        </script>
     </body>
 </html>

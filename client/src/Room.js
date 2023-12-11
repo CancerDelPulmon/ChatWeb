@@ -10,32 +10,62 @@ export default class Room {
 // Room dictionary
 
 export const rooms = {
-    entrance: new Room("Welcome to Home Depot! You're at the entrance.", null, null, "toolsSection", "entrance.jpg"),
-    paintSection: new Room("You're in the paint section. Explore the color palette!", null, "lumber", "gardeningSection", "paint_section.jpg"),
-    lumber: new Room("Choose your type of wood.", "entrance", "plumbingSection", null, "lumber.jpg"),
-    plumbingSection: new Room("You're in the plumbing section. Find everything you need for your projects.", "toolsSection","entrance", "register", "plumbing_section.jpg"),
-    gardeningSection: new Room("Welcome to the gardening section. Get ready to beautify your outdoor space.", null, null, "plumbingSection", "gardening_section.jpg"),
-    toolsSection: new Room("You're in the tools section. Find the right tools for your DIY projects.", "paintSection", null, "gardeningSection", "tools_section.jpg"),
-    register: new Room("You're at the register. Thank you for shopping at Home Depot!", null, null, null, "register.jpg")
+    entrance: new Room("Welcome to Home Depot!", null, null, "toolsSection", "img/entrance.jpg"),
+    paintSection: new Room("Paint section. Explore the color palette!", null, "lumber", "gardeningSection", "img/paint.jpg"),
+    lumber: new Room("Lumber section. Choose your type of wood!", "entrance", "plumbingSection", null, "img/lumber.jpg"),
+    plumbingSection: new Room("Plumbing section.", "toolsSection","entrance", "register", "img/plumbing.jpg"),
+    gardeningSection: new Room("Welcome to the gardening section", null, "lumber", "plumbingSection", "img/gardening.jpg"),
+    toolsSection: new Room("Tools section. Find the right tools!", "paintSection","gardeningSection", null, "img/tools.jpg"),
+    register: new Room("You're at the register.You Won!", null, null, null, "img/register.jpg")
 };
 
 export let currentRoom = rooms.entrance;
 export let roomHistory = [];
 
+
 // Function to update room description and background image
 function updateRoom() {
-    document.getElementById("room-description").innerText = currentRoom.description;
-    document.body.style.backgroundImage = `url(${currentRoom.backgroundImage})`;
+    //register music
+    const backgroundMusic = document.querySelector('#background-music');
+    if(currentRoom == rooms.register)   {backgroundMusic.play();}
+    else {backgroundMusic.pause()}
+    //description
+    document.querySelector(".room-description").innerText = currentRoom.description;
+    let node = document.querySelector(".game");
+    node.style.backgroundImage = `url(${currentRoom.backgroundImage})`;
+    //arrows
+    let arrowUp = document.querySelector(".forward");
+    let arrowLeft = document.querySelector(".left");
+    let arrowRight = document.querySelector(".right");
+    //showing arrows
+    if(currentRoom.forward) {arrowUp.style.display = "block";}
+    else{arrowUp.style.display = "none";}
+    if(currentRoom.left) {arrowLeft.style.display = "block";}
+    else{arrowLeft.style.display = "none";}
+    if(currentRoom.right) {arrowRight.style.display = "block";}
+    else{arrowRight.style.display = "none";}
 }
 
 // Function to handle left button click
+
+function sendMessage(message)
+{
+    let childNode = document.createElement("div")
+    childNode.innerText = message;
+    let parentNode = document.querySelector(".room-description")
+    parentNode.appendChild(childNode);
+    setTimeout(() => 
+    {
+        childNode.remove();
+    }, 2000);
+}
 function goLeft() {
     if (currentRoom.left) {
         roomHistory.push(currentRoom);
         currentRoom = rooms[currentRoom.left];
         updateRoom();
     } else {
-        alert("There's no section on the left.");
+        sendMessage("There's no section on the left.");
     }
     console.log("go left")
 }
@@ -47,7 +77,7 @@ function goRight() {
         currentRoom = rooms[currentRoom.right];
         updateRoom();
     } else {
-        alert("There's no section on the right.");
+        sendMessage("There's no section on the right.");
     }
     console.log("go right")
 }
@@ -56,10 +86,11 @@ function goRight() {
 function goForward() {
     if (currentRoom.forward) {
         roomHistory.push(currentRoom);
+        console.log(rooms[currentRoom.forward]);
         currentRoom = rooms[currentRoom.forward];
         updateRoom();
     } else {
-        alert("There's no section forward.");
+        sendMessage("There's no section forward.");
     }
     console.log("go forward")
 }
@@ -70,16 +101,11 @@ function goBack() {
         currentRoom = roomHistory.pop();
         updateRoom();
     } else {
-        alert("You can't go back from here.");
+        sendMessage("You can't go back from here.");
     }
     console.log("go back")
 }
 
-// Event handlers
-document.addEventListener("keydown", function (event) {
-    if (event.key === "ArrowDown") {
-        goBack();
-    }
-});
 
 export {goLeft,goRight,goForward,goBack};
+export {updateRoom};

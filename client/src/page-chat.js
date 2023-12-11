@@ -1,7 +1,9 @@
 import {registerCallbacks, sendMessage, signout, chatMessageLoop} from './chat-api';
-import Room from './Room';
+import Room, { updateRoom } from './Room';
 import { goLeft, goRight, goForward, goBack} from './Room';
-import { rooms } from './Room';
+import { rooms,currentRoom, roomHistory } from './Room';
+
+import Hand from './Hand';
 // chat events
 window.addEventListener("load", () => {
     document.querySelector("textarea").onkeyup = function (evt) {
@@ -11,10 +13,22 @@ window.addEventListener("load", () => {
     registerCallbacks(newMessage, memberListUpdate);
     chatMessageLoop();
 
-    // music button
-    document.querySelector("#play-button").onclick = () =>  {togglePlay()};
+    let userNode = document.querySelector(".user")
+    userNode.innerText += " " + localStorage.getItem('username')
+
+    userNode.addEventListener("click", function() {
+        scrambleUser();
+    });
+    
 })
 
+const scrambleUser = () =>
+{
+    let userNode = document.querySelector(".user")
+    let text = userNode.innerText;
+    let reversedText = text.split('').reverse().join('');
+    userNode.innerText = reversedText;
+}
 // Lorsqu'un nouveau message doit être affiché à l'écran, cette fonction est appelée
 const newMessage = (fromUser, message, isPrivate) => {
     console.log(fromUser, message, isPrivate);
@@ -23,6 +37,10 @@ const newMessage = (fromUser, message, isPrivate) => {
     node.innerText = fromUser + ": " + message;
     let parentNode = document.querySelector("#vue-container"); 
     parentNode.append(node);
+    if(message == "scramble")
+    {
+        scrambleUser()
+    }
 }
 
 // À chaque 2-3 secondes, cette fonction est appelée. Il faudra donc mettre à jour la liste des membres
@@ -39,20 +57,51 @@ const memberListUpdate = members => {
 // music play
 function togglePlay() {
     const backgroundMusic = document.getElementById('background-music');
-    if (backgroundMusic.paused) {
-        backgroundMusic.play();
-        document.getElementById('play-button').innerText = 'Pause';
-    } else {
-        backgroundMusic.pause();
-        document.getElementById('play-button').innerText = 'Play';
-    }
+    if (backgroundMusic.paused) {backgroundMusic.play();} 
+    else { backgroundMusic.pause();}
 }
 
 // game
 
-
+// inital setup
 window.addEventListener("load", () => {
-    setTimeout(function() {
+    updateRoom();
+    let arrowUp = document.querySelector(".forward");
+    let arrowLeft = document.querySelector(".left");
+    let arrowRight = document.querySelector(".right");
+
+    arrowUp.addEventListener('click', function(event) {
         goForward();
-    }, 2000);
+    });
+    
+    arrowRight.addEventListener('click', function(event) {
+        goRight();
+    });
+
+    arrowLeft.addEventListener('click', function(event) {
+        goLeft();
+    });
+    
+    let epic = new Hand();
 })
+
+document.addEventListener('keydown', function(event) {
+    switch (event.key) {
+        case 'ArrowLeft':
+            goLeft();
+            break;
+        case 'ArrowRight':
+            goRight();
+            break;
+        case 'ArrowUp':
+            goForward();
+            break;
+        case 'ArrowDown':
+            goBack();
+            break;
+        case ' ':
+            togglePlay();
+            break;
+    }
+});
+
