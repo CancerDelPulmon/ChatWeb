@@ -1,13 +1,32 @@
-Chat:
-    Evenement Clavier:
-si une fleche est presente dans l'ecran, cliquer la fleche correspondante sur le clavier vas changer de Room 
-si tu a avancer a une chambre, tu peut faire fleche d'arriere pour retourner a la piece precendente
-faire espace met toggle la musique
-    Evenement souris:
-Cliquer sur le nom usager qui est connecter le met a lenvers
-cliquer sur les fleches presente sur lecran vas changer de Room
-cliquer sur lecran a droite vas creer un sprite qui vole
-    Evenement chat:
-si quelqun ecris scramble le nom de lusager principale se met a lenvers
-DOM:
-    
+# Événements du Chat
+
+## Événements Clavier :
+- Si une flèche est affichée à l'écran, appuyer sur la touche fléchée correspondante changera de pièce.
+- Après avoir avancé dans une pièce, vous pouvez appuyer sur la flèche arrière pour revenir à la pièce précédente.
+- Appuyer sur la barre d'espace active ou désactive la musique.
+
+## Événements de la Souris :
+- Cliquer sur le nom d'utilisateur connecté le met à l'envers.
+- Cliquer sur les flèches affichées à l'écran change de pièce.
+- Cliquer à droite de l'écran crée un sprite Hands.
+- Une chance sur cinq d'écrire "hehehe" dans le texte privé.
+
+## Événement du Chat :
+- Si quelqu'un écrit, le nom de l'utilisateur principal est inversé.
+- FlyingText crée 10 textes volants pendant un moment.
+- Si un FlyingText est cliqué, il disparaît.
+- Effacer supprime tous les sprites.
+
+# Index
+
+## Événement de la Souris :
+- Cliquer sur "Mot de passe oublié" crée un FlyingText.
+
+# Inscription
+
+## Événement Clavier :
+- Cliquer sur une lettre ou un chiffre jouera le son de Sans d'Undertale.
+
+## Événement de la Souris :
+- Cliquer n'importe où crée une boule.
+

@@ -4,6 +4,7 @@ import { goLeft, goRight, goForward, goBack} from './Room';
 import { rooms,currentRoom, roomHistory } from './Room';
 
 import Hand from './Hand';
+import FlyingText from './FlyingText';
 // chat events
 window.addEventListener("load", () => {
     document.querySelector("textarea").onkeyup = function (evt) {
@@ -19,6 +20,7 @@ window.addEventListener("load", () => {
     userNode.addEventListener("click", function() {
         scrambleUser();
     });
+
     
 })
 
@@ -37,10 +39,36 @@ const newMessage = (fromUser, message, isPrivate) => {
     node.innerText = fromUser + ": " + message;
     let parentNode = document.querySelector("#vue-container"); 
     parentNode.append(node);
-    if(message == "scramble")
-    {
-        scrambleUser()
+
+    switch (message) {
+        case "scramble":
+            scrambleUser();
+            break;
+        case "erase":
+            sprites.forEach(element => {
+                element.node.remove()
+            });
+            sprites.splice(0, sprites.length);
+            break;
+        case "flyingText":
+            let messages = [
+                "You're killing me, Smalls!",
+                "I can't believe you've done this",
+                "Oh my God, they killed Kenny!",
+                "Talk to the hand, 'cause the face ain't listening",
+                "Not!",
+                "What is love? Baby don't hurt me.",
+                "Show me the money!",
+                "Did I do that?",
+                "You go, girl!",
+                "Is it a bird? Is it a plane? No, it's..."
+              ];
+            for (let i = 0; i < 10; i++) {
+                sprites.push(new FlyingText(document.body, messages[i]))
+            }
+            break;
     }
+    
 }
 
 // À chaque 2-3 secondes, cette fonction est appelée. Il faudra donc mettre à jour la liste des membres
@@ -82,7 +110,7 @@ window.addEventListener("load", () => {
     arrowLeft.addEventListener('click', function(event) {
         goLeft();
     });
-    // hand stealing hand
+    // hand stealing animation
     document.addEventListener("click", (event) => {
         const x = (event.clientX / window.innerWidth) * 100; // Convert to vw
         const y = (event.clientY / window.innerHeight) * 100; // Convert to vh
@@ -96,7 +124,7 @@ window.addEventListener("load", () => {
     // start sprite    
     animate();
 })
-
+// sprite
 const animate = () =>
 {
     sprites.forEach((sprite, index) => { 
