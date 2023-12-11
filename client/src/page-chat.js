@@ -64,6 +64,7 @@ function togglePlay() {
 // game
 
 // inital setup
+let sprites = []
 window.addEventListener("load", () => {
     updateRoom();
     let arrowUp = document.querySelector(".forward");
@@ -81,10 +82,36 @@ window.addEventListener("load", () => {
     arrowLeft.addEventListener('click', function(event) {
         goLeft();
     });
-    
-    let epic = new Hand();
+    // hand stealing hand
+    document.addEventListener("click", (event) => {
+        const x = (event.clientX / window.innerWidth) * 100; // Convert to vw
+        const y = (event.clientY / window.innerHeight) * 100; // Convert to vh
+        if(x < 30 && y < 80)
+        {
+            let hand = new Hand(x,y)
+            sprites.push(hand);
+        }
+        
+    });
+    // start sprite    
+    animate();
 })
 
+const animate = () =>
+{
+    sprites.forEach((sprite, index) => { 
+        if (!sprite.tick()) {
+            // Remove the sprite from the array
+            if (sprite instanceof Hand) {
+                if(Math.random() <= 0.2){
+                    setTimeout( () => {newMessage(localStorage.getItem('username'), 'hehehe', true);}, 2000);
+                }
+            }
+            sprites.splice(index, 1);
+        }
+    });
+    requestAnimationFrame(animate);
+}
 document.addEventListener('keydown', function(event) {
     switch (event.key) {
         case 'ArrowLeft':

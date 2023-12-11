@@ -1,4 +1,4 @@
-export default class Arrow{
+export default class Description{
     constructor()
     {
         
@@ -6,6 +6,6 @@ export default class Arrow{
 
     tick()
     {
-        
+
     }
 }
